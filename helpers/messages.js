@@ -1,7 +1,6 @@
 require("colors");
 
 const { objMenu } = require("../constants");
-const { customReadline } = require("../utils");
 
 const showMenu = () => {
     console.log("&&&&&&&&&&&&&&&&&&&&");
@@ -12,13 +11,28 @@ const showMenu = () => {
         console.log(`${key.blue}. ${values}`);
     };
 
-    const readline = customReadline;
+    const readline = require("readline").createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
     readline.question("Select a option: ", (answer) => {
         readline.close();
     });
 };
 
+const pause = () => {
+    const readline = require("readline").createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    readline.question(`Select ${"Enter".green} to continue: `, (answer) => {
+        readline.close();
+    });
+}
+
 module.exports = {
-    showMenu
+    showMenu,
+    pause,
 }
