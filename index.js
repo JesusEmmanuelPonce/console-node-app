@@ -6,9 +6,16 @@ const main = async() => {
 
     console.clear();
 
-    showMenu();
+    let option = "";
 
-    // pause();
+    do {
+
+        option = await showMenu();
+        console.log("from main: ", option);
+
+        if(option !== '0') await pause();
+
+    } while (option !== '0');
 };
 
 main();
